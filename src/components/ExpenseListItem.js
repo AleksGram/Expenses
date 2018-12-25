@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const ExpenseListItem = ({ description, amount, createdAt, id }) => (
+ const ExpenseListItem = ({ description, amount, createdAt, id }) => (
   <div>
     <Link to={`/edit/${id}`}>
       <h1>
