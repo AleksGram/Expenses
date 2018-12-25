@@ -25,7 +25,7 @@ import { DateRangePicker } from 'react-dates';
         return (
             <div>
                 <input type='text' value={this.props.filters.text} onChange={(e) => {
-                    props.dispatch(setTextFilter(e.target.value))
+                    this.props.dispatch(setTextFilter(e.target.value))
                 }}/>
                 <select 
                 value={this.props.filters.sortBy}
