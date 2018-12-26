@@ -27,8 +27,8 @@ test('errorRender_forInvalidSubmit', () => {
 
 test('setNoteOnTextareaChange', () => {
     const value = 'note'
-    expect(wrapper).toMatchSnapshot();
     const wrapper = shallow(<ExpenseForm/>);
+    expect(wrapper).toMatchSnapshot();
     wrapper.find('textarea').simulate('change', {
         target: {value}
     });
@@ -38,8 +38,8 @@ test('setNoteOnTextareaChange', () => {
 
 test('setDescriptionOnInputChange', () => {
     const value = 'NewDescription'
-    expect(wrapper).toMatchSnapshot();
     const wrapper = shallow(<ExpenseForm/>);
+    expect(wrapper).toMatchSnapshot();
     wrapper.find('input').at(0).simulate('change', {
         target: {value}
     });
@@ -54,6 +54,7 @@ test('setAmount_validInput', () => {
         target: {value}
     })
     expect(wrapper.state('amount')).toBe(value);
+    expect(wrapper).toMatchSnapshot();
 })
 
 test('setAmount_INvalidInput', () => {
@@ -63,4 +64,13 @@ test('setAmount_INvalidInput', () => {
         target: {value}
     })
     expect(wrapper.state('amount')).toBe("");
+    expect(wrapper).toMatchSnapshot();
 })
+
+test('valid_submitProps', () => {
+    const onSubmitSpy = jest.fn();
+    const wrapper = shallow(<ExpenseForm expense={expenses[0]} onSubmit={onSubmitSpy}/>)
+    wrapper.find('form').simulate('submit', {
+        preventDefault: () => {}
+    })
+});
