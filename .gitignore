@@ -1,2 +1,6 @@
 /node_modules
+bundle.js
 package-lock.json
+/src/playground
+.DS_Store
+/src/__tests__/components/__snapshots__
