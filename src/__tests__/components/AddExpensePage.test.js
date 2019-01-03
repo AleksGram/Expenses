@@ -5,7 +5,7 @@ import expenses from '../../testFixtures/expenses';
 
 let addExpense, history, wrapper;
 
-beforeEach(() => {
+beforeAll(() => {
      addExpense = jest.fn();
      history = { push: jest.fn() };
      wrapper = shallow(<AddExpensePage addExpense={addExpense} history={history}/>);

@@ -6,12 +6,7 @@ import { removeExpense } from '../actions/expenses';
 
 
 export class EditExpensePage extends Component {
-  constructor (props) {
-    super(props)
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onClick = this.onClick.bind(this)
-
-  }
+ 
   onSubmit = (expense) => {
     this.props.editExpense(this.props.expense.id, expense)
     this.props.history.push('/');
@@ -37,29 +32,6 @@ export class EditExpensePage extends Component {
   }
 }
 
-// const EditExpensePage = (props) => {
-//   console.log(props);
-//   return (
-//     <div>
-//       <ExpenseForm
-//         expense = {props.expense}
-//         onSubmit={(expense) => {
-//           props.dispatch(editExpense(props.expense.id, expense))
-//           props.history.push('/');
-//         }}
-//       />
-//       <button 
-//       onClick={
-//         () => {
-//           props.dispatch(removeExpense({id: props.expense.id}))
-//           props.history.push('/')
-//         }
-//       }
-//       >Remove</button>  
-//     </div>
-//   );
-// };
-
 
 
 const mapStateToPros = (state, props) => {
@@ -68,10 +40,10 @@ const mapStateToPros = (state, props) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
-    editExpense: (expense) => dispatch(editExpense(this.expense.id, expense)),
-    removeExpense: () => dispatch(removeExpense({id: this.props.expense.id}))
+    editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+    removeExpense: (data) => dispatch(removeExpense(data))
   }
 }
 
