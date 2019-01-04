@@ -5,7 +5,7 @@ import { sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/f
 import { DateRangePicker } from 'react-dates';
 
 
- class ExpenseListFilters extends Component {
+ export class ExpenseListFilters extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -13,32 +13,36 @@ import { DateRangePicker } from 'react-dates';
         }
     }
     onDatesChange = ({ startDate, endDate }) => {
-        this.props.dispatch(setStartDate(startDate));
-        this.props.dispatch(setEndDate(endDate));
+        this.props.setStartDate(startDate);
+        this.props.setEndDate(endDate);
     }
 
     onFocusChange = (calendarFocused) => {
         this.setState({calendarFocused})
     }
 
+    onTextChange = (e) => {
+        this.props.setTextFilter(e.target.value)
+    }
+
+    onSortChange = (e) => {
+        switch(e.target.value) {
+            case 'amount':
+            this.props.sortByAmount();
+            break;
+            case 'date':
+            this.props.sortByDate();
+            break;
+        }
+    }
+
     render () {
         return (
             <div>
-                <input type='text' value={this.props.filters.text} onChange={(e) => {
-                    this.props.dispatch(setTextFilter(e.target.value))
-                }}/>
+                <input type='text' value={this.props.filters.text} onChange={this.onTextChange}/>
                 <select 
                 value={this.props.filters.sortBy}
-                onChange={(e) => {
-                    switch(e.target.value) {
-                        case 'amount':
-                        this.props.dispatch(sortByAmount());
-                        break;
-                        case 'date':
-                        this.props.dispatch(sortByDate());
-                        break;
-                    }
-                }}>
+                onChange={this.onSortChange}>
                     <option value="date">Date</option>
                     <option value="amount">Amount</option>
                 </select>
@@ -63,4 +67,12 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)( ExpenseListFilters);
+const mapDispatchToProps = (dispatch) => ({
+    setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+    setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+    setTextFilter: (value) => dispatch(setTextFilter(value)),
+    sortByAmount: () => dispatch(sortByAmount()),
+    sortByDate: () => dispatch(sortByDate()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)( ExpenseListFilters);

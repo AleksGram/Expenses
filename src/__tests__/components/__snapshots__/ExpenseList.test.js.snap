@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renderExpenseList 1`] = `
+exports[`ExpenseList_test render 1`] = `
 <div>
   <h1>
     Expense List
@@ -32,7 +32,7 @@ exports[`renderExpenseList 1`] = `
 </div>
 `;
 
-exports[`renderExpenseList_noExpenses 1`] = `
+exports[`ExpenseList_test render_noExpenses 1`] = `
 <div>
   <h1>
     Expense List
