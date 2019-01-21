@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`errorRender_forInvalidSubmit 1`] = `
+exports[`ExpenseForm_test errorRender_forInvalidSubmit 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -106,7 +106,7 @@ exports[`errorRender_forInvalidSubmit 1`] = `
 </div>
 `;
 
-exports[`errorRender_forInvalidSubmit 2`] = `
+exports[`ExpenseForm_test errorRender_forInvalidSubmit 2`] = `
 <div>
   <p>
     Please provide description and amount
@@ -215,7 +215,7 @@ exports[`errorRender_forInvalidSubmit 2`] = `
 </div>
 `;
 
-exports[`expenseFormRender_noProps 1`] = `
+exports[`ExpenseForm_test render_noProps 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -321,7 +321,7 @@ exports[`expenseFormRender_noProps 1`] = `
 </div>
 `;
 
-exports[`expenseFormRender_withExpenses 1`] = `
+exports[`ExpenseForm_test render_withExpenses 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -427,7 +427,7 @@ exports[`expenseFormRender_withExpenses 1`] = `
 </div>
 `;
 
-exports[`setAmount_INvalidInput 1`] = `
+exports[`ExpenseForm_test setAmount_INvalidInput 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -533,7 +533,7 @@ exports[`setAmount_INvalidInput 1`] = `
 </div>
 `;
 
-exports[`setAmount_validInput 1`] = `
+exports[`ExpenseForm_test setAmount_validInput 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -639,7 +639,7 @@ exports[`setAmount_validInput 1`] = `
 </div>
 `;
 
-exports[`setDescriptionOnInputChange 1`] = `
+exports[`ExpenseForm_test setDescriptionOnInputChange 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -745,7 +745,7 @@ exports[`setDescriptionOnInputChange 1`] = `
 </div>
 `;
 
-exports[`setDescriptionOnInputChange 2`] = `
+exports[`ExpenseForm_test setDescriptionOnInputChange 2`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -851,7 +851,7 @@ exports[`setDescriptionOnInputChange 2`] = `
 </div>
 `;
 
-exports[`setNoteOnTextareaChange 1`] = `
+exports[`ExpenseForm_test setNoteOnTextareaChange 1`] = `
 <div>
   <form
     onSubmit={[Function]}
@@ -957,7 +957,7 @@ exports[`setNoteOnTextareaChange 1`] = `
 </div>
 `;
 
-exports[`setNoteOnTextareaChange 2`] = `
+exports[`ExpenseForm_test setNoteOnTextareaChange 2`] = `
 <div>
   <form
     onSubmit={[Function]}
