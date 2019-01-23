@@ -11,9 +11,9 @@ exports[`ExpenseListItemRender 1`] = `
     </h1>
   </Link>
   <p>
-    5000
-     - 
-    0
+    $50.00
+    -
+    January 1st, 1970
   </p>
 </div>
 `;
