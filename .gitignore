@@ -1,9 +1,6 @@
 /node_modules
 bundle.js
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.map
+public/dist
 package-lock.json
 /src/playground
 .DS_Store
