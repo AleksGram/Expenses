@@ -10,12 +10,9 @@ import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import './firebase/firebase';
 
 const store = configureStore();
-
-store.dispatch(addExpense({ description: 'Water bill', amount: 500, createdAt: 0 }));
-store.dispatch(addExpense({ description: 'Gas bill', createdAt: moment(0).subtract(4, 'days').valueOf() }));
-store.dispatch(addExpense({ description: 'Rent', amount: 25300, createdAt: moment(0).add(4, 'days').valueOf() }));
 
 
   
