@@ -8,26 +8,40 @@ const config = {
     projectId: "expenses-73cea",
     storageBucket: "expenses-73cea.appspot.com",
     messagingSenderId: "755394546538"
-  };
+};
 
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-  const database = firebase.database()
+const database = firebase.database()
 
-  database.ref()
-        .once('value')
-        .then((data) => {
-            console.log(data.val())
-        }).catch((e) => {
-            console.log('Failed', e);
-        });
-     
-        database.ref().on('value', (snapshot) => {
-            const data = snapshot.val();
-            console.log(`${data.name} from ${data.location.city} he is ${data.personData.height} cm `)
-        }, (e) => {
-            console.log('Failed fetching data', e);
-        })
+export { firebase, database as default };
+
+// database.ref()
+//     .once('value')
+//     .then((data) => {
+//         console.log(data.val())
+//     }).catch((e) => {
+//         console.log('Failed', e);
+//     });
+
+// database.ref().on('value', (snapshot) => {
+//     const data = snapshot.val();
+//     console.log(`${data.name} from ${data.location.city} he is ${data.personData.height} cm `)
+// }, (e) => {
+//     console.log('Failed fetching data', e);
+// })
+
+// database.ref().on('child_removed', (snapshot) => {
+//     console.log('Deleted ', snapshot.key, snapshot.val());
+// })
+
+// database.ref().on('child_changed', (snapshot) => {
+//     console.log('Changed ', snapshot.key, snapshot.val());
+// })
+
+// database.ref().on('child_added', (snapshot) => {
+//     console.log('Added ', snapshot.key, snapshot.val());
+// })
 
 //   database.ref().set({
 //       name: 'AlexGram',
