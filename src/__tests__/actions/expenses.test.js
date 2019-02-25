@@ -1,11 +1,19 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, removeExpense, editExpense, addExpense } from '../../actions/expenses';
+import { startAddExpense, removeExpense, editExpense, addExpense, setExpenses } from '../../actions/expenses';
 import expenses from '../../testFixtures/expenses';
 import database from '../../firebase/firebase';
 
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach ((done) => {
+    const expensesData = {};
+    expenses.forEach(({ id, description, note, amount, createdAt }) => {
+        expensesData[id] = { description, note, amount, createdAt };
+    });
+    database.ref('expenses').set(expensesData).then(() => done());
+})
 
 const testId = 'testId';
 test('removeExpenseAction', () => {
@@ -122,6 +130,12 @@ test('add_default_expense_to_DB', (done) => {
         expect(snapshot.val()).toEqual(defaultExpenseData);
         done();
     });
+})
 
-
+test('setup setExpense action with data', () => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    })
 })
