@@ -7,7 +7,8 @@ import {
     addExpense,
     setExpenses,
     startSetExpenses,
-    startRemoveExpenses
+    startRemoveExpenses,
+    startEditExpenses
 } from '../../actions/expenses';
 import expenses from '../../testFixtures/expenses';
 import database from '../../firebase/firebase';
@@ -24,6 +25,8 @@ beforeEach((done) => {
 })
 
 const testId = 'testId';
+
+
 test('removeExpenseAction', () => {
     const action = removeExpense({ id: testId });
     expect(action).toEqual({
@@ -31,6 +34,7 @@ test('removeExpenseAction', () => {
         id: testId
     })
 })
+
 
 test('delete the expense from DB', (done) => {
     const store = createMockStore({})
@@ -60,11 +64,28 @@ test('editExpenseAction', () => {
     })
 })
 
-test('removeExpenseAction', () => {
-    const action = removeExpense({ id: 'testId' })
-    expect(action).toEqual({
-        type: 'REMOVE_EXPENSE',
-        id: 'testId'
+test('edit expense into DB', (done) => {
+    const store = createMockStore({});
+
+    const id = expenses[2].id;
+    const updates = {
+        description: 'edited description',
+        note: 'edited note',
+        amount: 50000,
+        createdAt: 12345
+    }
+    store.dispatch(startEditExpenses(id, updates)).then(() => {
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id,
+            updates
+        })
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual(updates)
+        done();
     })
 })
 
