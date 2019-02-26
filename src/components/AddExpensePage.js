@@ -6,7 +6,6 @@ import { startAddExpense } from '../actions/expenses';
 
 export class AddExpensePage extends Component {
   onSubmit = (expense) => {
-    debugger
     this.props.startAddExpense(expense)
     this.props.history.push('/');
   };
