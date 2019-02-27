@@ -12,16 +12,10 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider(); 
 
-export  { firebase, database as default };
+export  { firebase, googleAuthProvider, database as default };
 
-database.ref('expenses/-LZd8T52ppCOeGrbenxX').once('value').then((snapshot) => {
-    const db = [];
-    // snapshot.forEach((note) => {
-    //     db.push({id: note.key,...note.val()});
-    // })
-    console.log(snapshot.val())
-})
 // database.ref()
 //     .once('value')
 //     .then((data) => {
