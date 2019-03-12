@@ -1,0 +1,29 @@
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(78, 82, 78, 0.71);
+    width: 100%;
+    height: 100%;
+    padding-top: 50%;
+    z-index: 5;
+}
+
+.popup__content {
+    width: 20%;
+    border: 1px solid rgb(58, 107, 88);
+    margin: 0 auto;
+    background: #677a60;
+    position: relative;
+    top: calc(100% - 35em);
+    h3 {
+        text-align: center;
+        color: #ebf4e5;
+    }
+}
+
+.popup__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 5px; 
+}

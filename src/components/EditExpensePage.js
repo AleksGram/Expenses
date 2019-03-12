@@ -2,24 +2,57 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import {
-   startRemoveExpenses,
-   startEditExpenses
-   } from '../actions/expenses';
+  startRemoveExpenses,
+  startEditExpenses,
+  removeRequest
+} from '../actions/expenses';
 
 
 export class EditExpensePage extends Component {
- 
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      remove: false
+    }
+  }
+
   onSubmit = (expense) => {
     this.props.startEditExpenses(this.props.expense.id, expense)
     this.props.history.push('/');
   }
+
   onClick = () => {
-    this.props.startRemoveExpenses({id: this.props.expense.id})
+    this.setState({ remove: true })
+  }
+
+  cancelRemove = () => {
+    this.setState({ remove: false });
+  }
+
+  confirmRemove = () => {
+    this.props.startRemoveExpenses({ id: this.props.expense.id })
     this.props.history.push('/')
 
   }
 
-  render () {
+
+  renderRemovepopup = () => {
+    return (
+      <div className="popup">
+        <div className="popup__content">
+          <h3>Are you sure?</h3>
+          <div className="popup__footer">
+            <button onClick={this.confirmRemove} className="button button--dang">Remove</button>
+            <button onClick={this.cancelRemove} className="button button--link">Cancel</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+  render() {
     return (
       <div>
         <div className="page-header">
@@ -28,17 +61,18 @@ export class EditExpensePage extends Component {
           </div>
         </div>
         <div className="content-container">
+          {(this.state.remove) ? (this.renderRemovepopup()) : null}
           <ExpenseForm
-            expense = {this.props.expense}
+            expense={this.props.expense}
             onSubmit={this.onSubmit}
           />
-          <button 
+          <button
             className='button button--secondary'
             onClick={this.onClick}
-            >Remove expense
-          </button>  
+          >Remove expense
+          </button>
         </div>
-    </div>
+      </div>
     )
   }
 }
@@ -54,7 +88,8 @@ const mapStateToPros = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     startEditExpenses: (id, expense) => dispatch(startEditExpenses(id, expense)),
-    startRemoveExpenses: ({id}) => dispatch(startRemoveExpenses({ id }))
+    startRemoveExpenses: ({ id }) => dispatch(startRemoveExpenses({ id })),
+    removeRequest: ({ id }) => dispatch(removeRequest({ id }))
   }
 }
 

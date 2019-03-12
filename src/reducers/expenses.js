@@ -9,7 +9,15 @@ export default (state = expensesReducerDefaultState, action) => {
         ...state,
         action.expense
       ];
-
+    case 'REMOVE_REQUEST':
+       state.map((expense) => {
+        if (expense.id === action.id) {
+          return expense['remove'] = true;
+        } else {
+          return expense
+        }
+      })
+    
     case 'REMOVE_EXPENSE':
       return state.filter(({ id }) => id !== action.id);
 
