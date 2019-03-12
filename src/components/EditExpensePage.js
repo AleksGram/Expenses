@@ -4,7 +4,6 @@ import ExpenseForm from './ExpenseForm';
 import {
   startRemoveExpenses,
   startEditExpenses,
-  removeRequest
 } from '../actions/expenses';
 
 
@@ -89,7 +88,6 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     startEditExpenses: (id, expense) => dispatch(startEditExpenses(id, expense)),
     startRemoveExpenses: ({ id }) => dispatch(startRemoveExpenses({ id })),
-    removeRequest: ({ id }) => dispatch(removeRequest({ id }))
   }
 }
 

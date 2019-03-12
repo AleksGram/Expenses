@@ -43,11 +43,6 @@ export const startRemoveExpenses = ({ id }) => {
   }
 }
 
-export const removeRequest = ({id}) => ({
-  type: 'REMOVE_REQUEST',
-  id
-})
-
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',

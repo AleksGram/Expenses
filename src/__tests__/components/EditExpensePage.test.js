@@ -15,7 +15,7 @@ describe('EditExpensePage_test', () => {
             <EditExpensePage
             startEditExpenses={startEditExpenses} 
                 history={history } 
-                startRemoveExpenses={startRemoveExpenses} 
+                startRemoveExpenses={startRemoveExpenses}
                 expense={expenses[0]} 
             />
         )
@@ -34,10 +34,20 @@ describe('EditExpensePage_test', () => {
         expect(startEditExpenses).toHaveBeenLastCalledWith(expenses[0].id, expenses[0])
     })
 
-    test('EditExpensePage_removeExpense', () => {
+
+    test('EditExpensePage_removeExpenseCancel', () => {
         wrapper.find('button').simulate('click');
+        expect(wrapper.state().remove).toBe(true); 
+
+        wrapper.find('button.button--link').simulate('click');
+        expect(wrapper.state().remove).toBe(false); 
+    })
+
+    test('EditExpensePage_removeExpenseConfirm', () => {
+        wrapper.find('button').simulate('click');
+        wrapper.find('button.button--dang').simulate('click');
 
         expect(history.push).toHaveBeenLastCalledWith('/');
-        expect(startRemoveExpenses).toHaveBeenLastCalledWith({ id: expenses[0].id});
+        expect(startRemoveExpenses).toHaveBeenLastCalledWith({ id: expenses[0].id});       
     })
 })
